@@ -1,68 +1,59 @@
-﻿
-
-$(document).ready(function () {
-
+﻿$(document).ready(function () {
     LoadCategoryGrid();
-
 });
 
 function LoadCategoryGrid() {
-
     $("#CategoryGrid").load("/Category/CategoryGrid");
-
 }
+
 function OpenCategoryPopup() {
 
-    $("#_Create").load("/Category/Create");
-
-    $("#categoryPopup").css("display", "flex");
+    $("#_Create").load("/Category/Create", function () {
+        $("#categoryPopup").css("display", "flex");
+    });
 }
 
 function CloseCategoryPopup() {
-
     $("#categoryPopup").hide();
-} 
+}
+
 function AddCategory() {
 
     var data = {
-        varName: $("#varName").val(),
-        varDescription: $("#varDescription").val(),
-        IsActive: $("#chkIsActive").is(":checked") ? 1 : 0
+        varName: $("#varName").val().trim(),
+        varDescription: $("#varDescription").val().trim(),
+        IsActive: $("#chkIsActive").is(":checked")
     };
 
     $.ajax({
-
         url: "/Category/AddCategory",
         type: "POST",
         data: data,
-
         success: function (response) {
 
             if (response.success) {
 
-                $("#categoryModal").hide();
-                LoadCategoryGrid();
                 alert(response.message);
+
+                $("#categoryPopup").hide();
+
+                $("#varName").val("");
+                $("#varDescription").val("");
+                $("#chkIsActive").prop("checked", true);
+
+                LoadCategoryGrid();
 
             } else {
 
                 alert(response.message);
 
             }
-
         },
+        error: function (xhr) {
 
-        error: function () {
-
+            console.log(xhr.responseText);
             alert("Something went wrong.");
 
         }
-
     });
-
 }
-    $("#chkIsActive").on("change", function () {
-        $("#IsActive").val(this.checked ? 1 : 0);
-    });
-
-});

@@ -31,14 +31,19 @@ namespace ClothingStore.Controllers
             return PartialView("_Create");
         }
         [HttpPost]
+        [HttpPost]
         public IActionResult AddCategory(Category model)
         {
             if (!ModelState.IsValid)
             {
+                var errors = ModelState.Values
+                                       .SelectMany(v => v.Errors)
+                                       .Select(e => e.ErrorMessage);
+
                 return Json(new
                 {
                     success = false,
-                    message = "Please fill all required fields."
+                    message = string.Join(", ", errors)
                 });
             }
 

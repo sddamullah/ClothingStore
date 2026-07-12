@@ -15,7 +15,7 @@
             <label>Status</label>
 
             <label class="switch">
-                <input type="checkbox"  id="chkIsActive" checked>
+                @Html.CheckBoxFor(model => model.IsActive, new { id = "chkIsActive" })
                 <span class="slider"></span>
             </label>
 
