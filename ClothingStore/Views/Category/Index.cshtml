@@ -1,0 +1,51 @@
+﻿@{
+
+    ViewData["Title"] = "Index";
+}
+@section Scripts
+{
+    <script src="~/js/category.js" asp-append-version="true"></script>
+}
+<input class="btn btn-primary" onclick="OpenCategoryPopup()" value="Add Category">
+   
+  
+<div class="container mt-4">
+
+    <h3>Category List</h3>
+
+    <div id="CategoryGrid">
+        Loading...
+    </div>
+    <div id="categoryPopup" class="app-popup">
+
+        <div class="app-popup-content">
+
+            <div class="app-popup-header">
+
+                <div>
+                    <h2>Add Category</h2>
+                    <p>Fill in the details below.</p>
+                </div>
+
+                <button type="button"
+                        class="app-popup-close"
+                        onclick="CloseCategoryPopup()">
+                    &times;
+                </button>
+
+            </div>
+
+            <div class="app-popup-body">
+
+                <div id="_Create">
+                    Loading...
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+ 
