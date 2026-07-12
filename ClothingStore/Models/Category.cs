@@ -17,7 +17,7 @@ namespace ClothingStore.Models
         [MaxLength(500)]
         public string? varDescription { get; set; }
 
-        public bool? IsActive { get; set; }
+          public bool? IsActive { get; set; }
 
         public DateTime? dtCreatedDate { get; set; }
 
