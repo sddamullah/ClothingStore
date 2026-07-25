@@ -1,0 +1,31 @@
+﻿@model ClothingStore.Models.Category
+<form id="frmEditCategory" class="category-form">
+    <input type="hidden" id="editIntSeqId" value="@Model.intSeqId" />
+    <div class="form-row">
+        <div class="form-group">
+            <label asp-for="varName">Category Name</label>
+            <input asp-for="varName" class="form-control" id="editVarName" value="@Model.varName" />
+        </div>
+        <div class="form-group">
+            <label>Status</label>
+            <label class="switch">
+                <input type="checkbox" id="editChkIsActive" checked="@Model.IsActive" />
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div class="form-group full-width">
+            <label asp-for="varDescription">Description</label>
+            <textarea id="editVarDescription" rows="5" class="form-control">@Model.varDescription</textarea>
+        </div>
+    </div>
+    <div class="form-footer">
+        <button type="button" id="btnUpdate" onclick="UpdateCategory()" class="btn-save">
+            <i class="fa-solid fa-floppy-disk"></i>
+            Update Category
+        </button>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

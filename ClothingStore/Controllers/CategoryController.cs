@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ClothingStore.Data;
 using ClothingStore.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ClothingStore.Controllers
 {
@@ -30,7 +31,37 @@ namespace ClothingStore.Controllers
  
             return PartialView("_Create");
         }
+        // GET: fetch a single category by id (to populate the edit form)
+        [HttpGet]
+        public IActionResult GetCategoryById(int id)
+        {
+            var category = _db.Categories.FirstOrDefault(c => c.intSeqId == id);
+            if (category == null)
+                return Json(new { success = false, message = "Category not found." });
+
+            return PartialView("_Edit", category);
+        }
+
+        // POST: update category
         [HttpPost]
+        public IActionResult UpdateCategory(int intSeqId, string varName, string varDescription, bool IsActive)
+        {
+            var category = _db.Categories.FirstOrDefault(c => c.intSeqId == intSeqId);
+            if (category == null)
+                return Json(new { success = false, message = "Category not found." });
+
+            if (string.IsNullOrWhiteSpace(varName))
+                return Json(new { success = false, message = "Category name is required." });
+
+            category.varName = varName.Trim();
+            category.varDescription = varDescription?.Trim();
+            category.IsActive = IsActive;
+            category.dtUpdatedDate = DateTime.Now;
+
+            _db.SaveChanges();
+
+            return Json(new { success = true, message = "Category updated successfully." });
+        }
         [HttpPost]
         public IActionResult AddCategory(Category model)
         {
