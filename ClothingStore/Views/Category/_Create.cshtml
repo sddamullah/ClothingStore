@@ -1,40 +1,26 @@
 ﻿@model ClothingStore.Models.Category
-<form id="frmCategory" class="category-form">
-
-    <div class="form-row">
-
-        <!-- Category Name -->
-        <div class="form-group">
+<form id="frmCreateCategory" class="sc-form">
+    <div class="sc-form-row">
+        <div class="sc-form-group">
             <label asp-for="varName">Category Name</label>
-            <input asp-for="varName" class="form-control" id="varName" />
+            <input asp-for="varName" class="sc-input" id="varName" placeholder="e.g. Outerwear" />
         </div>
-
-        <!-- Is Active -->
-        <div class="form-group">
-
+        <div class="sc-form-group">
             <label>Status</label>
-
-            <label class="switch">
-                @Html.CheckBoxFor(model => model.IsActive, new { id = "chkIsActive" })
-                <span class="slider"></span>
+            <label class="sc-switch">
+                <input type="checkbox" id="chkIsActive" checked />
+                <span class="sc-slider"></span>
             </label>
-
- 
         </div>
-
-        <!-- Description -->
-        <div class="form-group full-width">
+        <div class="sc-form-group sc-full" style="width:100%;">
             <label asp-for="varDescription">Description</label>
-            <textarea asp-for="varDescription" id="varDescription"  rows="5" class="form-control"></textarea>
+            <textarea id="varDescription" rows="5" class="sc-input" placeholder="What belongs in this category?"></textarea>
         </div>
-
     </div>
-
-    <div class="form-footer">
-        <button type="button" id="btnSave" onclick="AddCategory()" class="btn-save">
+    <div class="sc-form-footer">
+        <button type="button" id="btnSave" onclick="AddCategory()" class="sc-btn sc-btn--primary">
             <i class="fa-solid fa-floppy-disk"></i>
             Save Category
         </button>
     </div>
-
 </form>

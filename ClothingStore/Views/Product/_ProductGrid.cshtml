@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ClothingStore.Models.Product>
+
+
+  
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @if (!string.IsNullOrEmpty(item.varImageUrl))
+                    {
+                        <img src="@item.varImageUrl"
+                     style="object-fit:cover;border-radius:8px;    width: 60px; height: auto;" />
+                    }
+                    else
+                    {
+                        <span>No Image</span>
+                    }
+                </td>
+
+
+                <td>
+                    @item.varName
+                </td>
+
+
+                <td>
+                    @item.flPrice
+                </td>
+
+
+                <td>
+                    @item.intQuantity
+                </td>
+
+
+                <td>
+                    @item.varBrand
+                </td>
+
+
+                <td>
+                    @(item.isActive == true ? "Active" : "Inactive")
+                </td>
+       
+        <td>
+            <img src="images/edit.png" width="20" onclick="OpenEditProductPopup(@item.intSeqId)" height="20" title="Edit" style="cursor:pointer;" />
+            <img src="images/delete.png" width="20" onclick="DeleteProduct(@item.intSeqId)"  height="20" title="Delete" style="cursor:pointer;" />
+        </td>
+            </tr>
+        }
+
+ 
+ 

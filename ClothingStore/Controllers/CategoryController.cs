@@ -89,5 +89,27 @@ namespace ClothingStore.Controllers
                 message = "Category added successfully."
             });
         }
+        public IActionResult Delete(int id)
+        {
+            var category = _db.Categories.FirstOrDefault(x => x.intSeqId == id);
+
+            if (category == null)
+            {
+                return Json(new
+                {
+                    success = false,
+                    message = "category not found."
+                });
+            }
+
+            _db.Categories.Remove(category);
+            _db.SaveChanges();
+
+            return Json(new
+            {
+                success = true,
+                message = "category deleted successfully."
+            });
+        }
     }
 }

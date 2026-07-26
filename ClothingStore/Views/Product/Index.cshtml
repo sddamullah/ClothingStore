@@ -1,0 +1,77 @@
+﻿@section Scripts
+{
+<script src="~/js/Product.js" asp-append-version="true"></script>
+}
+
+
+<div class="sc-page">
+    <div class="sc-panel">
+        <div class="sc-panel__head">
+            <div>
+                <h2 class="sc-panel__title">Product</h2>
+            
+            </div>
+            <button type="button" class="sc-btn sc-btn--primary" onclick="OpenProductPopup()">
+                <i class="fa-solid fa-plus"></i>
+                Add Product
+            </button>
+        </div>
+        <div class="sc-table-cont ">
+
+       
+        <table class="sc-table ">
+            <tr class="">              
+                <th>Image</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Brand</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            <tbody id="ProductGrid">
+                <tr>
+                    <td colspan="100%" class="sc-table__empty" style="text-align:center">Loading…</td>
+                </tr>
+               
+           </tbody>
+    </table>
+        </div>
+    </div>
+
+    <div id="productPopup" class="sc-popup" style="display:none;">
+        <div class="sc-popup__content">
+            <div class="sc-popup__header">
+            <h3>Add Product</h3>
+
+                <button type="button" class="sc-popup__close" onclick="CloseProductPopup()">
+               X
+            </button>
+        </div>
+
+            <div id="_CreateProduct" class="sc-popup__body"></div>
+    </div>
+</div>
+    <div id="productEditPopup" class="sc-popup" style="display:none;">
+
+        <div class="sc-popup__content">
+
+            <div class="sc-popup__header">
+
+                <h3>Edit Product</h3>
+
+                <button onclick="CloseEditProductPopup()" class="sc-popup__close">
+                    <i class="fa fa-times"></i>
+                </button>
+
+            </div>
+
+
+            <div id="_EditProduct" class="sc-popup__body sc-form"></div>
+
+
+        </div>
+
+    </div>
+ 
+</div>

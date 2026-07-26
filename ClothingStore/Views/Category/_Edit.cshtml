@@ -1,30 +1,31 @@
 ﻿@model ClothingStore.Models.Category
-<form id="frmEditCategory" class="category-form">
+<form id="frmEditCategory" class="sc-form">
     <input type="hidden" id="editIntSeqId" value="@Model.intSeqId" />
-    <div class="form-row">
-        <div class="form-group">
+    <div class="sc-form-row">
+        <div class="sc-form-group">
             <label asp-for="varName">Category Name</label>
-            <input asp-for="varName" class="form-control" id="editVarName" value="@Model.varName" />
+            <input asp-for="varName" class="sc-input" id="editVarName" value="@Model.varName" />
         </div>
-        <div class="form-group">
+        <div class="sc-form-group">
             <label>Status</label>
-            <label class="switch">
+            <label class="sc-switch">
                 <input type="checkbox" id="editChkIsActive" checked="@Model.IsActive" />
-                <span class="slider"></span>
+                <span class="sc-slider"></span>
             </label>
         </div>
-        <div class="form-group full-width">
+        <div class="sc-form-group sc-full" style="width:100%;">
             <label asp-for="varDescription">Description</label>
-            <textarea id="editVarDescription" rows="5" class="form-control">@Model.varDescription</textarea>
+            <textarea id="editVarDescription" rows="5" class="sc-input">@Model.varDescription</textarea>
         </div>
     </div>
-    <div class="form-footer">
-        <button type="button" id="btnUpdate" onclick="UpdateCategory()" class="btn-save">
+    <div class="sc-form-footer">
+        <button type="button" id="btnUpdate" onclick="UpdateCategory()" class="sc-btn sc-btn--primary">
             <i class="fa-solid fa-floppy-disk"></i>
             Update Category
         </button>
     </div>
 </form>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

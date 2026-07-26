@@ -1,0 +1,102 @@
+﻿@model ClothingStore.Models.Product
+
+
+<input type="hidden" id="intSeqId" value="@Model.intSeqId" />
+
+
+<div class="sc-form-row">
+
+
+<div class="sc-form-group">
+
+<label>Category</label>
+
+        <select id="intCategoryId" class="sc-input">
+
+            @foreach (var item in ViewBag.CategoryList)
+            {
+                if (item.intSeqId == Model.intCategoryId)
+                {
+                    <option value="@item.intSeqId" selected>
+                        @item.varName
+                    </option>
+                }
+                else
+                {
+                    <option value="@item.intSeqId">
+                        @item.varName
+                    </option>
+                }
+            }
+
+        </select>
+
+</div>
+
+
+
+<div class="sc-form-group">
+
+<label>Product Name</label>
+
+<input id="varName"
+       class="sc-input"
+       value="@Model.varName" />
+
+</div>
+
+
+
+<div class="sc-form-group">
+
+<label>Price</label>
+
+<input id="flPrice"
+       class="sc-input"
+       value="@Model.flPrice" />
+
+</div>
+
+
+
+<div class="sc-form-group">
+
+<label>Quantity</label>
+
+<input id="intQuantity"
+       class="sc-input"
+       value="@Model.intQuantity" />
+
+</div>
+
+
+
+<div class="sc-form-group">
+
+<label>Product Image</label>
+
+<input type="file"
+       id="ImageFile"
+       class="sc-input" />
+
+
+@if(!string.IsNullOrEmpty(Model.varImageUrl))
+{
+    <img src="@Model.varImageUrl"
+         width="80"
+         height="80" />
+}
+
+</div>
+
+
+</div>
+
+
+<button type="button"
+        onclick="UpdateProduct()"
+        class="sc-btn sc-btn--primary">
+
+Update Product
+
+</button>

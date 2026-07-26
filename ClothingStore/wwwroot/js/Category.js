@@ -96,3 +96,41 @@ function UpdateCategory() {
         }
     });
 }
+
+
+
+function Deletecatedory(id) {
+
+    $.ajax({
+
+        url: "/Category/Delete?id=" + id,
+
+        type: "DELETE",
+
+        success: function (response) {
+
+            if (response.success) {
+
+                alert(response.message);
+
+                LoadCategoryGrid();
+
+            }
+            else {
+
+                alert(response.message);
+
+            }
+
+        },
+
+        error: function (xhr) {
+
+            console.log(xhr.responseText);
+            alert("Something went wrong.");
+
+        }
+
+    });
+
+}

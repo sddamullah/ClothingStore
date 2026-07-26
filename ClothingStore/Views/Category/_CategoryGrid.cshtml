@@ -5,19 +5,19 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
+            <th class="sc-cell">
                 @Html.DisplayNameFor(model => model.varName)
             </th>
-            <th>
+            <th class="sc-cell">
                 @Html.DisplayNameFor(model => model.varDescription)
             </th>
-            <th>
+            <th class="sc-cell">
                 @Html.DisplayNameFor(model => model.IsActive)
             </th>
-            <th>
+            <th class="sc-cell">
                 @Html.DisplayNameFor(model => model.dtCreatedDate)
             </th>
-            <th>
+            <th class="sc-cell">
                 @Html.DisplayNameFor(model => model.dtUpdatedDate)
             </th>
             <th></th>
@@ -41,9 +41,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.dtUpdatedDate)
             </td>
-            <td>
-                    <a onclick="OpenEditCategoryPopup(@item.intSeqId)">Edit</a> |
-                 <a asp-action="Delete" asp-route-id="@item.intSeqId">Delete</a>
+            <td>                
+                    <img src="images/edit.png"  width="20" onclick="OpenEditCategoryPopup(@item.intSeqId)" height="20" title="Edit" style="cursor:pointer;" />
+                    <img src="images/delete.png" width="20" onclick="Deletecatedory(@item.intSeqId)" height="20" title="Delete" style="cursor:pointer;" />
             </td>
         </tr>
 }

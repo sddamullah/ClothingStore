@@ -1,0 +1,117 @@
+﻿@model ClothingStore.Models.Product
+
+<form id="frmCreateProduct" class="sc-form">
+
+    <div class="sc-form-row">
+
+        <div class="sc-form-group">
+            <label>Category</label>
+
+            <select id="intCategoryId" class="sc-input">
+                <option value="">Select Category</option>
+
+                @foreach (var item in ViewBag.CategoryList)
+                {
+                    <option value="@item.intSeqId">@item.varName</option>
+                }
+
+            </select>
+
+        </div>
+
+        <div class="sc-form-group">
+            <label>Product Name</label>
+            <input type="text" id="varName" class="sc-input" />
+        </div>
+
+        <div class="sc-form-group">
+            <label>Product Code</label>
+            <input type="text" id="varProductCode" class="sc-input" />
+        </div>
+
+        <div class="sc-form-group">
+            <label>Price</label>
+            <input type="number" id="flPrice" class="sc-input" />
+        </div>
+
+        <div class="sc-form-group">
+            <label>Discount Price</label>
+            <input type="number" id="flDiscountPrice" class="sc-input" />
+        </div>
+
+        <div class="sc-form-group">
+            <label>Quantity</label>
+            <input type="number" id="intQuantity" class="sc-input" />
+        </div>
+
+        <div class="sc-form-group">
+            <label>Brand</label>
+            <input type="text" id="varBrand" class="sc-input" />
+        </div>
+
+        <div class="sc-form-group">
+            <label>Size</label>
+            <input type="text" id="varSize" class="sc-input" />
+        </div>
+
+        <div class="sc-form-group">
+            <label>Color</label>
+            <input type="text" id="varColor" class="sc-input" />
+        </div>
+        <div class="sc-form-group">
+
+            <label>Product Image</label>
+
+            <input type="file"
+                   id="ImageFile"
+                   class="sc-input"
+                   accept="image/*" />
+
+        </div>
+        <div class="sc-form-group" style="display:none">
+            <label>Image Url</label>
+            <input type="text" id="varImageUrl" class="sc-input" />
+        </div>
+
+        <div class="sc-form-group">
+            <label>Featured</label>
+
+            <label class="sc-switch">
+                <input type="checkbox" id="isFeatured" />
+                <span class="sc-slider"></span>
+            </label>
+
+        </div>
+
+        <div class="sc-form-group" >
+            <label>Active</label>
+
+            <label class="sc-switch">
+                <input type="checkbox" id="isActive" checked />
+                <span class="sc-slider"></span>
+            </label>
+
+        </div>
+
+        <div class="sc-form-group sc-full" style="    width: 100%;">
+            <label>Description</label>
+
+            <textarea id="varDescription" rows="5" class="sc-input"></textarea>
+
+        </div>
+
+    </div>
+
+    <div class="sc-form-footer">
+
+        <button type="button"
+                onclick="AddProduct()"
+                class="sc-btn sc-btn--primary">
+
+            Save Product
+
+        </button>
+
+    </div>
+
+</form>
