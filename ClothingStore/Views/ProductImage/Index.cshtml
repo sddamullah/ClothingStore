@@ -1,0 +1,74 @@
+@{
+    ViewData["Title"] = "Product Images";
+}
+
+ 
+
+<div id=""></div>
+
+<div id=""></div>
+
+<div class="sc-page">
+    <div class="sc-panel">
+        <div class="sc-panel__head">
+            <div>
+                <h2 class="sc-panel__title"> Product Image</h2>
+
+            </div>
+            <button type="button" class="sc-btn sc-btn--primary" onclick="OpenCreateProductImagePopup()">
+                <i class="fa-solid fa-plus"></i>
+                Add Product Image
+            </button>
+        </div>
+        <div class="sc-table-cont ">
+
+
+            <table class="sc-table ">
+                <tr class="">
+                    <th>Image</th>
+                    <th>Product Name</th>
+                    <th>Is Main</th>
+                    <th>Display Order</th>
+                    <th>Action</th>
+                </tr>
+                <tbody id="productImageGridContainer">
+                    <tr>
+                        <td colspan="100%" class="sc-table__empty" style="text-align:center">Loading…</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div id="ProductImagePopup" class="sc-popup" style="display:none;">
+
+        <div class="sc-popup__content">
+
+            <div class="sc-popup__header">
+
+                <h3>  Product Image</h3>
+
+                <button onclick="CloseProductImagePopup()" class="sc-popup__close">
+                    <i class="fa fa-times"></i>
+                </button>
+
+            </div>
+
+            <div id="productImagePopupContainer" class="sc-popup__body sc-form"></div>
+
+
+
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/productImage.js" asp-append-version="true"></script>
+}

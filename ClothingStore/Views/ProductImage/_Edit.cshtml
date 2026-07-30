@@ -1,0 +1,51 @@
+@model ClothingStore.Models.ProductImage
+
+<form id="frmEditProductImage" class="sc-form" enctype="multipart/form-data">
+    <input type="hidden" id="editImageId" name="ImageId" value="@Model.ImageId" />
+    <div class="sc-form-row">
+        <div class="sc-form-group">
+            <label for="editProductId">Product  </label>
+            <select id="productId" name="ProductId" class="sc-input">
+                <option value="">Select Product</option>
+
+                @foreach (var item in ViewBag.ProductList)
+                {
+                    if (item.intSeqId == Model.ProductId)
+                    {
+                        <option value="@item.intSeqId" selected>@item.varName</option>
+                    }
+                    else
+                    {
+                        <option value="@item.intSeqId">@item.varName</option>
+                    }
+                }
+            </select>
+            <span id="editProductIdError" class="text-danger"></span>
+        </div>
+        <div class="sc-form-group">
+            <label>Is Main</label>
+            <label class="sc-switch">
+                <input type="checkbox" id="editChkIsMain" name="IsMain" checked="@Model.IsMain" />
+                <span class="sc-slider"></span>
+            </label>
+        </div>
+        <div class="sc-form-group">
+            <label for="editDisplayOrder">Display Order</label>
+            <input type="number" class="sc-input" id="editDisplayOrder" name="DisplayOrder" value="@Model.DisplayOrder" />
+            <span id="editDisplayOrderError" class="text-danger"></span>
+        </div>
+        <div class="sc-form-group sc-full" style="width:100%;">
+            <label>Image</label>
+            <div id="editImageDropZone">
+                <input type="file" id="editImageFile" name="imageFile" accept="image/*" />
+                <img id="editImagePreview" src="@Model.ImagePath" width="80" height="80" />
+            </div>
+        </div>
+    </div>
+    <div class="sc-form-footer">
+        <button type="button" id="btnUpdateProductImage" onclick="UpdateProductImage()" class="sc-btn sc-btn--primary">
+            <i class="fa-solid fa-floppy-disk"></i>
+            Update Image
+        </button>
+    </div>
+</form>

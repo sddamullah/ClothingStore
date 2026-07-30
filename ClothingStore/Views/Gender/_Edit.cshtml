@@ -1,0 +1,30 @@
+@model ClothingStore.Models.Gender
+
+<form id="frmEditGender" class="sc-form">
+    <input type="hidden" id="editGenderId" name="GenderId" value="@Model.GenderId" />
+    <div class="sc-form-row">
+        <div class="sc-form-group">
+            <label for="editGenderName">Gender Name</label>
+            <input type="text" class="sc-input" id="editGenderName" name="GenderName" value="@Model.GenderName" />
+            <span id="editGenderNameError" class="text-danger"></span>
+        </div>
+        <div class="sc-form-group">
+            <label for="editDisplayOrder">Display Order</label>
+            <input type="number" class="sc-input" id="editDisplayOrder" name="DisplayOrder" value="@Model.DisplayOrder" />
+            <span id="editDisplayOrderError" class="text-danger"></span>
+        </div>
+        <div class="sc-form-group">
+            <label>Status</label>
+            <label class="sc-switch">
+                <input type="checkbox" id="editChkIsActive" name="IsActive" checked="@Model.IsActive" />
+                <span class="sc-slider"></span>
+            </label>
+        </div>
+    </div>
+    <div class="sc-form-footer">
+        <button type="button" id="btnUpdateGender" onclick="UpdateGender()" class="sc-btn sc-btn--primary">
+            <i class="fa-solid fa-floppy-disk"></i>
+            Update Gender
+        </button>
+    </div>
+</form>

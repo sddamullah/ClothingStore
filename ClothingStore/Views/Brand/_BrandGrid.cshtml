@@ -1,0 +1,28 @@
+﻿@model List<ClothingStore.Models.Brand>
+
+ 
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                <img src="@item.varLogoUrl" style="object-fit:cover;border-radius:8px;  width: 40px; height: 25;;" alt="@item.varBrandName" />
+                    </td>
+                    <td>@item.varBrandName</td>
+                    <td>@(item.isActive ? "Active" : "Inactive")</td>
+                    <td>@item.dtCreatedDate.ToString("dd-MMM-yyyy")</td>
+                    <td>
+                        <img src="images/edit.png" width="20" onclick="OpenEditBrandPopup(@item.intSeqId)" height="20" title="Edit" style="cursor:pointer;" />
+                        <img src="images/delete.png" width="20" onclick="DeleteBrand(@item.intSeqId)" height="20" title="Delete" style="cursor:pointer;" />
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5">No brands found</td>
+            </tr>
+        }
+     

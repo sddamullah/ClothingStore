@@ -1,0 +1,15 @@
+@{
+    ViewData["Title"] = "Genders";
+}
+
+<button type="button" onclick="OpenCreateGenderPopup()" class="sc-btn sc-btn--primary">
+    Add Gender
+</button>
+
+<div id="genderGridContainer"></div>
+
+<div id="genderPopupContainer"></div>
+
+@section Scripts {
+    <script src="~/js/gender.js"></script>
+}

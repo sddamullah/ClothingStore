@@ -1,0 +1,29 @@
+@model ClothingStore.Models.Gender
+
+<form id="frmCreateGender" class="sc-form">
+    <div class="sc-form-row">
+        <div class="sc-form-group">
+            <label for="genderName">Gender Name</label>
+            <input type="text" class="sc-input" id="genderName" name="GenderName" placeholder="e.g. Men" />
+            <span id="genderNameError" class="text-danger"></span>
+        </div>
+        <div class="sc-form-group">
+            <label for="displayOrder">Display Order</label>
+            <input type="number" class="sc-input" id="displayOrder" name="DisplayOrder" value="@Model.DisplayOrder" />
+            <span id="displayOrderError" class="text-danger"></span>
+        </div>
+        <div class="sc-form-group">
+            <label>Status</label>
+            <label class="sc-switch">
+                <input type="checkbox" id="chkIsActive" name="IsActive" checked="@Model.IsActive" />
+                <span class="sc-slider"></span>
+            </label>
+        </div>
+    </div>
+    <div class="sc-form-footer">
+        <button type="button" id="btnSaveGender" onclick="AddGender()" class="sc-btn sc-btn--primary">
+            <i class="fa-solid fa-floppy-disk"></i>
+            Save Gender
+        </button>
+    </div>
+</form>

@@ -1,0 +1,44 @@
+@model ClothingStore.Models.ProductImage
+
+<form id="frmCreateProductImage" class="sc-form" enctype="multipart/form-data">
+    <div class="sc-form-row">
+        <div class="sc-form-group">
+            <label for="productId">Product  </label>
+             <select id="productId" name="ProductId" class="sc-input">
+                <option value=""> Select ProductId</option>
+
+                @foreach (var item in ViewBag.ProductList)
+                {
+                    <option value="@item.intSeqId">@item.varName</option>
+                }
+
+            </select>
+            <span id="productIdError" class="text-danger"></span>
+        </div>
+        <div class="sc-form-group">
+            <label>Is Main</label>
+            <label class="sc-switch">
+                <input type="checkbox" id="chkIsMain" name="IsMain" />
+                <span class="sc-slider"></span>
+            </label>
+        </div>
+        <div class="sc-form-group">
+            <label for="displayOrder">Display Order</label>
+            <input type="number" class="sc-input" id="displayOrder" name="DisplayOrder" value="@Model.DisplayOrder" />
+            <span id="displayOrderError" class="text-danger"></span>
+        </div>
+        <div class="sc-form-group sc-full" style="width:100%;">
+            <label>Image</label>
+            <div id="imageDropZone">
+                <input type="file" id="imageFile" name="imageFile" accept="image/*" />
+                <img id="imagePreview" src="#" style="display:none;" width="80" height="80" />
+            </div>
+        </div>
+    </div>
+    <div class="sc-form-footer">
+        <button type="button" id="btnSaveProductImage" onclick="AddProductImage()" class="sc-btn sc-btn--primary">
+            <i class="fa-solid fa-floppy-disk"></i>
+            Save Image
+        </button>
+    </div>
+</form>

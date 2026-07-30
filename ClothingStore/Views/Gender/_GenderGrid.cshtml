@@ -1,0 +1,37 @@
+@model List<ClothingStore.Models.Gender>
+
+<table class="sc-table">
+    <thead>
+        <tr>
+            <th>Gender Name</th>
+            <th>Display Order</th>
+            <th>Status</th>
+            <th>Created Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.GenderName</td>
+                    <td>@item.DisplayOrder</td>
+                    <td>@(item.IsActive ? "Active" : "Inactive")</td>
+                    <td>@item.CreatedDate.ToString("dd-MMM-yyyy")</td>
+                    <td>
+                        <img src="images/edit.png" width="20" onclick="OpenEditGenderPopup(@item.GenderId)" height="20" title="Edit" style="cursor:pointer;" />
+                        <img src="images/delete.png" width="20" onclick="DeleteGender(@item.GenderId)" height="20" title="Delete" style="cursor:pointer;" />
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5">No genders found</td>
+            </tr>
+        }
+    </tbody>
+</table>

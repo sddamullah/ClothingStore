@@ -1,0 +1,31 @@
+@model List<ClothingStore.Models.ProductImage>
+
+ 
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @if (!string.IsNullOrEmpty(item.ImagePath))
+                        {
+                            <img src="@item.ImagePath" style="object-fit:cover;border-radius:8px;    width: 40px; height: 25;" alt="Product Image" />
+                        }
+                    </td>
+            <td>@item.Product?.varName</td>
+                    <td>@(item.IsMain ? "Yes" : "No")</td>
+                    <td>@item.DisplayOrder</td>
+                    <td>
+                        <img src="images/edit.png" width="20" onclick="OpenEditProductImagePopup(@item.ImageId)" height="20" title="Edit" style="cursor:pointer;" />
+                        <img src="images/delete.png" width="20" onclick="DeleteProductImage(@item.ImageId)" height="20" title="Delete" style="cursor:pointer;" />
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5">No product images found</td>
+            </tr>
+        }
+    -

@@ -1,0 +1,32 @@
+﻿@model ClothingStore.Models.Brand
+
+<form id="frmCreateBrand" class="sc-form" enctype="multipart/form-data">
+    <div class="sc-form-row">
+        <div class="sc-form-group">
+            <label asp-for="varBrandName">Brand Name</label>
+            <input asp-for="varBrandName" class="sc-input" id="varBrandName" placeholder="e.g. Nike" />
+            <span asp-validation-for="varBrandName" class="text-danger"></span>
+        </div>
+        <div class="sc-form-group">
+            <label>Status</label>
+            <label class="sc-switch">
+                <input type="checkbox" id="chkIsActive" name="isActive" checked />
+                <span class="sc-slider"></span>
+            </label>
+        </div>
+        <div class="sc-form-group sc-full" style="width:100%;">
+            <label>Logo</label>
+            <div id="logoDropZone">
+                <input type="file" id="logoFile" name="logoFile" accept="image/*" />
+                <img id="logoPreview" src="#" style="display:none;" width="80" height="80" />
+            </div>
+            <span id="logoValidationMsg" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="sc-form-footer">
+        <button type="button" id="btnSaveBrand" onclick="AddBrand()" class="sc-btn sc-btn--primary">
+            <i class="fa-solid fa-floppy-disk"></i>
+            Save Brand
+        </button>
+    </div>
+</form>

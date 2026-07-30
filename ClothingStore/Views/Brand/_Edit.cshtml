@@ -1,0 +1,32 @@
+﻿@model ClothingStore.Models.Brand
+
+<form id="frmEditBrand" class="sc-form" enctype="multipart/form-data">
+    <input type="hidden" asp-for="intSeqId" id="editIntSeqId" />
+    <div class="sc-form-row">
+        <div class="sc-form-group">
+            <label asp-for="varBrandName">Brand Name</label>
+            <input asp-for="varBrandName" class="sc-input" id="editVarBrandName" value="@Model.varBrandName" />
+            <span asp-validation-for="varBrandName" class="text-danger"></span>
+        </div>
+        <div class="sc-form-group">
+            <label>Status</label>
+            <label class="sc-switch">
+                <input type="checkbox" id="editChkIsActive" name="isActive" checked="@Model.isActive" />
+                <span class="sc-slider"></span>
+            </label>
+        </div>
+        <div class="sc-form-group sc-full" style="width:100%;">
+            <label>Logo</label>
+            <div id="editLogoDropZone">
+                <input type="file" id="editLogoFile" name="logoFile" accept="image/*" />
+                <img id="editLogoPreview" src="@Model.varLogoUrl" width="80" height="80" />
+            </div>
+        </div>
+    </div>
+    <div class="sc-form-footer">
+        <button type="button" id="btnUpdateBrand" onclick="UpdateBrand()" class="sc-btn sc-btn--primary">
+            <i class="fa-solid fa-floppy-disk"></i>
+            Update Brand
+        </button>
+    </div>
+</form>

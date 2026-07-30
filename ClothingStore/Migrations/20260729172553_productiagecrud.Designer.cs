@@ -4,6 +4,7 @@ using ClothingStore.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ClothingStore.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260729172553_productiagecrud")]
+    partial class productiagecrud
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,32 +84,6 @@ namespace ClothingStore.Migrations
                     b.HasKey("intSeqId");
 
                     b.ToTable("tblCategories");
-                });
-
-            modelBuilder.Entity("ClothingStore.Models.Gender", b =>
-                {
-                    b.Property<int>("GenderId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GenderId"));
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("DisplayOrder")
-                        .HasColumnType("int");
-
-                    b.Property<string>("GenderName")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.HasKey("GenderId");
-
-                    b.ToTable("tblGenders");
                 });
 
             modelBuilder.Entity("ClothingStore.Models.Product", b =>
@@ -198,8 +175,6 @@ namespace ClothingStore.Migrations
 
                     b.HasKey("ImageId");
 
-                    b.HasIndex("ProductId");
-
                     b.ToTable("tblProductImages");
                 });
 
@@ -210,17 +185,6 @@ namespace ClothingStore.Migrations
                         .HasForeignKey("intCategoryId");
 
                     b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("ClothingStore.Models.ProductImage", b =>
-                {
-                    b.HasOne("ClothingStore.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
                 });
 #pragma warning restore 612, 618
         }
